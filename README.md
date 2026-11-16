@@ -1,6 +1,12 @@
-# Sinerji Matching Microservice 🚀
+# Sinerji Matching Microservice
 
-Hybrid AI-Powered Matching Engine for the Sinerji Tech Talent Ecosystem.
+The hybrid AI matching engine behind the [Sinerji](https://github.com/aaas72/Sinerji) talent platform. Given one job and a batch of students, it returns a ranked match score for each student by combining strict rule-based filtering with NLP semantic similarity.
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Sentence Transformers](https://img.shields.io/badge/Sentence--Transformers-FF6F00?style=flat-square&logo=huggingface&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=pydantic&logoColor=white)
 
 ## 🌟 Overview
 This microservice acts as the intelligent core of the Sinerji platform. It solves the complex problem of matching junior tech talent (students) with companies/jobs by using a **Hybrid Dual-Track Engine**:
@@ -19,6 +25,19 @@ Where `α` (alpha) is a configurable weight defining how "flexible" or "strict" 
 - **Sentence-Transformers**: Open-source NLP state-of-the-art models (`all-MiniLM-L6-v2`) for computing semantic embeddings.
 - **Pydantic**: Robust data validation and JSON schema generation.
 - **Scikit-Learn & NumPy**: For vectorized mathematical operations and Cosine Similarity computations.
+
+---
+
+## 📁 Project Structure
+
+```text
+main.py                    # FastAPI app and /api/v1/match endpoint
+core/config.py             # Model name and default alpha weight
+models/schemas.py          # Pydantic request/response models
+services/deterministic.py  # Hard filters (languages, budget, location) and skill-level scoring
+services/semantic.py       # Embeddings (all-MiniLM-L6-v2) and cosine similarity
+test_matcher.py            # Local demo of the hybrid scoring
+```
 
 ---
 
@@ -97,6 +116,12 @@ Calculates match scores between a single job and a batch of students.
 ---
 
 ## 🚀 Roadmap / Next Steps
-- [ ] Integrate **Faiss** or **Pinecone** Vector Database for `O(1)` lightning-fast semantic retrieval for millions of students.
+- [ ] Integrate a vector index (**Faiss** or **Pinecone**) for fast approximate nearest-neighbour retrieval across very large student pools.
 - [ ] Add domain-specific NLP fine-tuning for Sinerji's unique tech datasets.
 - [ ] Dockerize the service.
+
+---
+
+## Author
+
+**Abdellah Sheikh** — [abdellahsheikh.dev](https://abdellahsheikh.dev) · [LinkedIn](https://www.linkedin.com/in/abdellahsheikh)
